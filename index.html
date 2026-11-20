@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🌸 Life Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ── Top Bar ── -->
+  <header class="topbar">
+    <div class="topbar-brand">
+      <span class="brand-emoji">🌸</span>
+      <span>Life Dashboard</span>
+    </div>
+    <div class="topbar-actions">
+      <button class="btn-theme" id="btn-theme">
+        <span id="theme-icon">🌙</span>
+        <span id="theme-text">Dark</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ── Dashboard Grid ── -->
+  <main class="dashboard">
+
+    <!-- 1. Greeting & Clock -->
+    <section class="card card-greeting">
+      <div class="greeting-left">
+        <p class="card-title">🌺 Dashboard Harianmu</p>
+        <h1 class="greeting-text" id="greeting-text">Selamat Pagi! 👋</h1>
+        <p class="greeting-date" id="greeting-date"></p>
+        <div class="name-edit-row">
+          <input
+            type="text"
+            id="name-input"
+            placeholder="Masukkan namamu…"
+            maxlength="40"
+            autocomplete="off"
+          />
+          <button class="btn-save-name" id="save-name-btn">💾 Simpan</button>
+        </div>
+      </div>
+      <div class="greeting-clock" id="clock">00:00:00</div>
+    </section>
+
+    <!-- 2. Pomodoro Timer -->
+    <section class="card card-pomodoro">
+      <p class="card-title">🍅 Focus Timer</p>
+
+      <div class="pomodoro-ring">
+        <svg viewBox="0 0 160 160">
+          <circle class="ring-bg"       cx="80" cy="80" r="70" />
+          <circle class="ring-progress" cx="80" cy="80" r="70" id="ring-progress" />
+        </svg>
+        <div class="pomodoro-time" id="pom-display">25:00</div>
+      </div>
+
+      <p class="pomodoro-label" id="pom-label">25:00 siap dimulai</p>
+
+      <div class="pomodoro-controls">
+        <button class="btn btn-primary" id="btn-pom-start">▶ Start</button>
+        <button class="btn btn-secondary" id="btn-pom-stop">⏸ Stop</button>
+        <button class="btn btn-secondary" id="btn-pom-reset">↺ Reset</button>
+      </div>
+    </section>
+
+    <!-- 3. Quick Links -->
+    <section class="card card-links">
+      <p class="card-title">🔗 Quick Links</p>
+
+      <div class="links-add-row">
+        <div class="row">
+          <input
+            class="input-text"
+            type="text"
+            id="link-name-input"
+            placeholder="Nama situs…"
+            maxlength="30"
+          />
+          <input
+            class="input-text"
+            style="width:48px; flex:none; text-align:center;"
+            type="text"
+            id="link-emoji-input"
+            placeholder="🔗"
+            maxlength="4"
+          />
+        </div>
+        <div class="row">
+          <input
+            class="input-text"
+            type="url"
+            id="link-url-input"
+            placeholder="https://…"
+          />
+          <button class="btn btn-primary" id="btn-add-link" style="white-space:nowrap;">
+            + Tambah
+          </button>
+        </div>
+      </div>
+
+      <div class="links-grid" id="links-grid"></div>
+    </section>
+
+    <!-- 4. To-Do List (full width) -->
+    <section class="card card-todo">
+      <div class="todo-header">
+        <p class="card-title">🌼 To-Do List</p>
+        <div class="todo-add-row">
+          <input
+            class="input-text"
+            type="text"
+            id="task-input"
+            placeholder="Tambah tugas baru…"
+            maxlength="200"
+            autocomplete="off"
+          />
+          <button class="btn btn-primary" id="btn-add-task">+ Tambah</button>
+        </div>
+      </div>
+
+      <!-- Sort Controls -->
+      <div class="todo-sort-row">
+        <span class="sort-label">Urutkan:</span>
+        <button class="sort-btn active" data-sort="default">🕐 Default</button>
+        <button class="sort-btn" data-sort="alpha">🔤 A–Z</button>
+        <button class="sort-btn" data-sort="done">📋 Belum Dulu</button>
+        <button class="sort-btn" data-sort="done-first">✅ Selesai Dulu</button>
+      </div>
+
+      <!-- Task List -->
+      <ul class="task-list" id="task-list"></ul>
+
+      <!-- Stats -->
+      <div class="todo-stats">
+        <span class="stats-pill">
+          <span id="stats-done">0</span> / <span id="stats-total">0</span> selesai
+        </span>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="progress-fill" style="width:0%"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
